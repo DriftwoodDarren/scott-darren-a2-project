@@ -6,39 +6,35 @@ using System.Security.AccessControl;
 // The namespace your code is in.
 namespace MohawkGame2D
 {
-    /// <summary>
     ///     Your game code goes inside this class!
-    /// </summary>
     public class Game
     {
         // Place your variables here:
 
 
-        /// <summary>
         ///     Setup runs once before the game loop begins.
-        /// </summary>
         public void Setup()
         {
+            //Window Setup
             Window.SetTitle("Skull Cursor Follow");
             Window.SetSize(400, 400);
             Window.TargetFPS = 60;
 
             Draw.LineColor = Color.Black;
             Draw.FillColor = Color.Black;
-
-            Window.ClearBackground(Color.OffWhite);
-            DrawSkull(200, 200);
+            
+            //Initial Drawing
+            Window.ClearBackground(Color.Magenta);
+            DrawSkull(Window.Width / 2, Window.Height / 2);
         }
 
-        /// <summary>
         ///     Update runs every frame.
-        /// </summary>
         public void Update()
         {
 
             if (Input.IsMouseButtonDown(MouseInput.Left))
             {
-                Window.ClearBackground(Color.OffWhite);
+                Window.ClearBackground(Color.Magenta);
                 DrawSkull(Input.GetMouseX(), Input.GetMouseY());
 
             }
