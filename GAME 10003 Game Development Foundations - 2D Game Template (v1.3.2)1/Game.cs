@@ -19,9 +19,6 @@ namespace MohawkGame2D
             Window.SetTitle("Skull Cursor Follow");
             Window.SetSize(400, 400);
             Window.TargetFPS = 60;
-
-            Draw.LineColor = Color.Black;
-            Draw.FillColor = Color.Black;
             
             //Initial Drawing
             Window.ClearBackground(Color.Magenta);
@@ -31,11 +28,21 @@ namespace MohawkGame2D
         ///     Update runs every frame.
         public void Update()
         {
-
             if (Input.IsMouseButtonDown(MouseInput.Left))
             {
                 Window.ClearBackground(Color.Magenta);
                 DrawSkull(Input.GetMouseX(), Input.GetMouseY());
+
+            }
+           
+            if (Input.IsKeyboardKeyDown(KeyboardInput.Space))
+            {
+                for (float cloudPositionX = -10,100; cloudPositionX < Window.Width + 20; cloudPositionX++;)
+                {
+                    Window.ClearBackground(Color.Magenta);
+                    Draw.Circle(cloudPositionX, 100, 10);
+                }
+                    
 
             }
 
@@ -44,6 +51,10 @@ namespace MohawkGame2D
         //Function for Skull Drawing 
         void DrawSkull(float x, float y)
         {
+            //Drawing Setup
+            Draw.LineColor = Color.Black;
+            Draw.FillColor = Color.Black;
+
             //Top of Skull
             Draw.Line(x - 20, y - 60, x + 20, y - 60);
 
