@@ -1,7 +1,6 @@
 ﻿// Include the namespaces (code libraries) you need below.
 using System;
 using System.Numerics;
-using Raylib_cs;
 
 // The namespace your code is in.
 namespace MohawkGame2D
@@ -10,7 +9,7 @@ namespace MohawkGame2D
     public class Game
     {
         // Place your variables here:
-       
+        //No Variables
 
         ///     Setup runs once before the game loop begins.
         public void Setup()
@@ -21,21 +20,20 @@ namespace MohawkGame2D
             Window.TargetFPS = 60;
             
             //Initial Skull Drawing
-            Window.ClearBackground(Color.Yellow);
+            Window.ClearBackground(Color.OffWhite);
             DrawSkull(Window.Width / 2, Window.Height / 2);
-
         }
 
         ///     Update runs every frame.
         public void Update()
         {
-            
-            if (Input.IsMouseButtonDown(MouseInput.Left) && Input.GetMouseX() <= 360 && Input.GetMouseX() >= 40 && Input.GetMouseY() <= 370 && Input.GetMouseY() >= 60)
+            /*Draw Skull at Mouse Position 
+            Mouse Position Must be Within Window to Update Skull Position*/
+            if (Input.IsMouseButtonDown(MouseInput.Left) && Input.GetMouseX() <= Window.Width - 40 && Input.GetMouseX() >= Window.Width - 360 && Input.GetMouseY() <= Window.Height - 30 && Input.GetMouseY() >= Window.Height - 340)
             {
-                Window.ClearBackground(Color.Magenta);
+                Window.ClearBackground(Color.OffWhite);
                 DrawSkull(Input.GetMouseX(), Input.GetMouseY());
             }
-
         }
 
         //Function for Skull Drawing 
@@ -89,8 +87,6 @@ namespace MohawkGame2D
             Draw.Circle(x + 20, y - 20, 5);
 
         }
-      
-
     }
 
 }
