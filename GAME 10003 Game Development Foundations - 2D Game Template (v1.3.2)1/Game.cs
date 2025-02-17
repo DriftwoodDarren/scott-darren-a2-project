@@ -1,7 +1,7 @@
 ﻿// Include the namespaces (code libraries) you need below.
 using System;
 using System.Numerics;
-using System.Security.AccessControl;
+using Raylib_cs;
 
 // The namespace your code is in.
 namespace MohawkGame2D
@@ -10,7 +10,7 @@ namespace MohawkGame2D
     public class Game
     {
         // Place your variables here:
-
+       
 
         ///     Setup runs once before the game loop begins.
         public void Setup()
@@ -20,30 +20,20 @@ namespace MohawkGame2D
             Window.SetSize(400, 400);
             Window.TargetFPS = 60;
             
-            //Initial Drawing
-            Window.ClearBackground(Color.Magenta);
+            //Initial Skull Drawing
+            Window.ClearBackground(Color.Yellow);
             DrawSkull(Window.Width / 2, Window.Height / 2);
+
         }
 
         ///     Update runs every frame.
         public void Update()
         {
-            if (Input.IsMouseButtonDown(MouseInput.Left))
+            
+            if (Input.IsMouseButtonDown(MouseInput.Left) && Input.GetMouseX() <= 360 && Input.GetMouseX() >= 40 && Input.GetMouseY() <= 370 && Input.GetMouseY() >= 60)
             {
                 Window.ClearBackground(Color.Magenta);
                 DrawSkull(Input.GetMouseX(), Input.GetMouseY());
-
-            }
-           
-            if (Input.IsKeyboardKeyDown(KeyboardInput.Space))
-            {
-                for (float cloudPositionX = -10,100; cloudPositionX < Window.Width + 20; cloudPositionX++;)
-                {
-                    Window.ClearBackground(Color.Magenta);
-                    Draw.Circle(cloudPositionX, 100, 10);
-                }
-                    
-
             }
 
         }
@@ -97,7 +87,9 @@ namespace MohawkGame2D
             Draw.Circle(x - 20, y - 20, 5);
             //Right Eye
             Draw.Circle(x + 20, y - 20, 5);
+
         }
+      
 
     }
 
